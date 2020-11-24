@@ -149,11 +149,12 @@ print(a)"""
 resposta16 = '38'
 
 pergunta17 = """
-a = '1.5'
-a = float(a)
-print(a*3)"""
+def func(a, b, c):  
+    return b**2 - 4*a*c
+    
+print(func(1, -6, 5))"""
 
-resposta17 = '4.5'
+resposta17 = '16'
 
 pergunta18 = """
 s = '11'
@@ -225,9 +226,9 @@ pergunta27 = """
 def func(num1, num2):
     return num1 ** num2
 
-print(func(2, 3))"""
+print(func(2, 5))"""
 
-resposta27 = '8'
+resposta27 = '32'
 
 pergunta28 = """
 def func(n1, n2):
