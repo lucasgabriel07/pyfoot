@@ -34,10 +34,8 @@ def iniciar_rodada(rodada):
         time1, time2 = jogo[0], jogo[1]
 
         if time_player == time1:
-            sleep(0.5)
             gols1, gols2 = partida(time2)
         elif time_player == time2:
-            sleep(0.5)
             gols2, gols1 = partida(time1)
         else:
             gols1 = randint(0, 4)
@@ -84,9 +82,8 @@ def pergunta(adversario):
     pergunta = perguntas[index]
     resposta = respostas[index]
 
-    print(pergunta)
-
     while True:
+        print(pergunta)
         entrada = input('\nO que será exibido na tela? >> ')
         if entrada == '' or entrada.isspace():
             print('\033[1;31m' + '\nEntrada inválida!' + '\033[0;0m')
@@ -178,24 +175,24 @@ def atualizar_classificacao():
 
 
 def tabela_de_jogos():
-    print()
-    print(60*'-')
+    print('\n' + 60*'-')
     print('TABELA DE JOGOS'.center(60))
     for rodada in range(len(lista_de_jogos)):  # Número de rodadas
-        print(60*'-')
+        print('\033[;1m' + 60*'=' + '\033[0;0m')
         print(f'{rodada+1}ª RODADA'.center(60))
-        print(f'{60*"-"}'.center(60))
+        print('\033[;1m' + 60*'=' + '\033[0;0m')
 
         for i in range(len(lista_de_times)//2):  # Jogos por rodada
             time1, time2, gols_time1, gols_time2 = lista_de_jogos[rodada][i]
             print(f'{time1:^20} {gols_time1:>1} x {gols_time2:<1} {time2:^20}'.center(60))
+            if i < len(lista_de_times)//2 - 1:
+                print(60 * '-')
 
     print(60 * '-')
 
 
 def classificacao():
-    print()
-    print(60 * '-')
+    print('\n' + 60 * '-')
     print('CLASSIFICAÇÃO'.center(60))
     print(60 * '-')
     print(f"{'#':^3} {'TIMES':^24} {'PG':^3} {'J':^3} {'V':^3} {'E':^3} {'D':^3} {'GP':^3} {'GC':^3} {'SG':^3}".center(60))
@@ -204,6 +201,7 @@ def classificacao():
         time = lista_de_times[i]
         pg, j, v, e, d, gp, gc, sg = pontuacao[i]
         print(f'{i+1:^3} {time:<24} {pg:^3} {j:^3} {v:^3} {e:^3} {d:^3} {gp:^3} {gc:^3} {sg:^3}'.center(60))
+        print(60*'-')
 
 
 print("""
@@ -236,12 +234,14 @@ while True:
     except (ValueError, IndexError):
         print('\033[1;31m \n' + 'Entrada inválida! Entre com um inteiro de 0 a 7.' + '\033[0;0m')
 
+sleep(0.5)
+limpar_tela()
+
 print(f'\nParabéns! Você é o novo treinador do {time_player}!')
 sleep(0.5)
 print('Esperamos que você honre nossa camisa e nos leve ao título!')
 
-sleep(3.5)
-limpar_tela()
+sleep(0.5)
 
 print('\n' + 24*'-' + ' INSTRUÇÕES ' + 24*'-')
 
@@ -270,7 +270,7 @@ while rodada_atual <= len(lista_de_jogos) - 1:
         limpar_tela()
         print()
         print(60*'-')
-        print('AJUDA'.center(60))
+        print('LISTA DE COMANDOS'.center(60))
         print(60*'-')
         print(ajuda())
     elif entrada == 'c':
