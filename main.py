@@ -24,7 +24,7 @@ Exibe a tabela de jogos.
 Exibe a tabela de classificação.
 
 >> p
-Vai para o próximo jogo."""
+Inicia o próximo jogo."""
 
     return comandos
 
@@ -50,28 +50,29 @@ def partida(adversario):
     gols_adversario = 0
 
     print(f'\nComeça o jogo! {time_player} x {adversario} pela {rodada_atual+1}ª Rodada.')
+    print(60*'-')
 
     for i in range(4):
         sleep(0.5)
+
         time = pergunta(adversario)  # Time que marcou gol
+
         if time == time_player:
             gols_player += 1
         else:
             gols_adversario += 1
-        sleep(0.5)
+
         if time == time_player:
             print('\033[1;32m' + f'\nGOOOOOOOOL DO {time}!' + '\033[0;0m')
         else:
             print('\033[1;31m' + f'\nGOOOOOOOOL DO {time}!' + '\033[0;0m')
 
         if index % 4 != 0 or index == 0:  # Não exibir na pergunta final de cada jogo
-            sleep(1)
             print(f'\nPlacar atual: {time_player} {gols_player} x {gols_adversario} {adversario}')
             print(60 * '-')
 
-    sleep(1)
     print(f'\nFim de jogo! Placar Final: {time_player} {gols_player} x {gols_adversario} {adversario}')
-    print('\n' + 60 * '-')
+    print(60 * '-')
 
     return gols_player, gols_adversario
 
@@ -237,15 +238,12 @@ while True:
 sleep(0.5)
 limpar_tela()
 
-print(f'\nParabéns! Você é o novo treinador do {time_player}!')
-sleep(0.5)
-print('Esperamos que você honre nossa camisa e nos leve ao título!')
-
-sleep(0.5)
-
 print('\n' + 24*'-' + ' INSTRUÇÕES ' + 24*'-')
 
-print("""
+print(f"""
+Parabéns! Você é o novo treinador do {time_player}! Esperamos
+que você honre nossa camisa e nos leve ao título!
+
 O jogo consiste em ler códigos em Python e responder qual será 
 a saída. Se você acertar, marcará um gol, mas se errar sofrerá 
 um gol. Serão respondidas 4 questões por jogo. O campeonato 
@@ -253,8 +251,8 @@ será por pontos corridos, no sistema todos contra todos, e em
 turno único.
 
 Ao final de cada rodada, você pode optar por ver a 
-classificação, a tabela de jogos, ou ir para a próxima 
-rodada, usando os seguintes comandos:""")
+classificação, a tabela de jogos, ou jogar a próxima 
+partida, usando os seguintes comandos:""")
 
 print(ajuda())
 print('\n' + 60*'-')
@@ -301,7 +299,7 @@ sleep(1.5)
 campeao = lista_de_times[0]
 
 if campeao == time_player:
-    print(f'\nParabéns! Seu time, {time_player}, sagrou-se campeão!')
+    print('\033[1;32m' + f'\nPARABÉNS! SEU TIME, {time_player}, É O NOVO CAMPEÃO!' + '\033[0;0m')
 else:
     i = 0
     while i <= 8:  # Número de times
@@ -309,5 +307,5 @@ else:
             break
         i += 1
 
-    print(f'\nO {campeao} foi campeão. Seu time {time_player} ficou na'
-          f' {i+1}º colocação.')
+    print('\033[1;31m' + f'\nO {campeao} FOI CAMPEÃO. SEU TIME, {time_player}, FICOU NA\n'
+          f'{i+1}ª COLOCAÇÃO.' + '\033[0;0m')
