@@ -241,14 +241,14 @@ limpar_tela()
 print('\n' + 24*'-' + ' INSTRUÇÕES ' + 24*'-')
 
 print(f"""
-Parabéns! Você é o novo treinador do {time_player}! Esperamos
-que você honre nossa camisa e nos leve ao título!
+Parabéns! Você é o novo treinador do {time_player}!
+Esperamos que você honre nossa camisa e nos leve ao título!
 
-O jogo consiste em ler códigos em Python e responder qual será 
-a saída. Se você acertar, marcará um gol, mas se errar sofrerá 
-um gol. Serão respondidas 4 questões por jogo. O campeonato 
-será por pontos corridos, no sistema todos contra todos, e em 
-turno único.
+O jogo consiste em ler códigos em Python e responder qual 
+informação será impressa na tela. Se você acertar, marcará
+um gol, mas se errar sofrerá um gol. Serão respondidas 4 
+questões por jogo. O campeonato será por pontos corridos,
+no sistema todos contra todos, e em turno único.
 
 Ao final de cada rodada, você pode optar por ver a 
 classificação, a tabela de jogos, ou jogar a próxima 
